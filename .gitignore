@@ -36,3 +36,4 @@ screenshot
 .firebase
 .eslintcache
 docs-dumi/build
+/.idea/
