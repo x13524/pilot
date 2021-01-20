@@ -27,6 +27,17 @@
         <input class="username" placeholder="派友请登录" type="text">
     </div>
     <div class="contentPage">
+        <div class="bgContent">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_1.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_2.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_3.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_4.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_5.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_6.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_7.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_8.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_9.jpg" alt="">
+        </div>
         <div class="clickBtn fiveYear" data-popname="fiveYear"></div>
         <div class="clickBtn tenYear" data-popname="tenYear"></div>
         <div class="clickBtn kyxf" data-popname="kyxf"></div>
@@ -57,6 +68,7 @@
 <script src="//cdn.bootcss.com/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
 <!--外部资源从这里开始-->
 <script class="external" src="./assets/scripts/jquery.min.js"></script>
+<script class="external" src="/assets/scripts/jquery.lazyload.min.js"></script>
 <script class="external" src="./assets/scripts/captcha-handler.min.js"></script>
 <script class="external" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script class="external" src="./assets/scripts/useWxApi.js"></script>
@@ -86,7 +98,15 @@
         $('.popContent').on('click', function () {
             $('.popBox,.popContent').fadeOut();
             $('.indexPage').removeClass('overflow-hidden');
-        })
+        });
+
+
+        $("img.lazy").lazyload({
+            threshold : 1000,
+            container: $(".indexPage"),
+            failurelimit : 2,
+            effect : "fadeIn"
+        });
     })(window);
 </script>
 </body>
