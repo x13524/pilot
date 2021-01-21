@@ -42,6 +42,12 @@
         <div class="clickBtn tenYear" data-popname="tenYear"></div>
         <div class="clickBtn kyxf" data-popname="kyxf"></div>
         <div class="clickBtn nddj" data-popname="nddj"></div>
+        <div class="J_Shake"></div>
+        <div class="videoBox">
+            <video class="videoDom" controls poster="./assets/images/video-poster.png" preload="auto" webkit-playsinline="webkit-playsinline">
+                <source src="./assets/video/video.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 </div>
 
@@ -64,6 +70,24 @@
     </div>
 </div>
 
+<div class="wishPopBox">
+    <div class="wishPopContent">
+        <div class="headBox J_head">
+            <img src="./assets/images/wish/test-head.jpg" alt="">
+        </div>
+        <div class="usernameBox J_username">万事如意</div>
+        <div class="wishImg" style=" background-image: url('./assets/images/wish/1.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/2.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/3.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/4.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/5.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/6.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/7.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/8.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/9.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/10.jpg')"></div>
+    </div>
+</div>
 
 <script src="//cdn.bootcss.com/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
 <!--外部资源从这里开始-->
@@ -102,11 +126,34 @@
 
 
         $("img.lazy").lazyload({
-            threshold : 1000,
+            threshold: 1000,
             container: $(".indexPage"),
-            failurelimit : 2,
-            effect : "fadeIn"
+            failurelimit: 2,
+            effect: "fadeIn"
         });
+
+        function getRandom() {
+            return Math.floor((Math.random() * 10));
+        };
+
+        // 关闭祝福弹窗
+        $('.wishPopBox').on('click',function () {
+            $('.wishPopBox,.wishImg').fadeOut();
+        });
+
+        // 显示随机祝福
+        $('.J_Shake').on('click',function () {
+            var username = $.trim($('input.username').val());
+            if(username){
+                $('.J_username').html(username)
+            }
+            var index  = getRandom();
+            console.log(index)
+            $('.wishPopBox .wishImg').hide().eq(index).show()
+            $('.wishPopBox').fadeIn();
+        })
+
+
     })(window);
 </script>
 </body>
