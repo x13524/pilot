@@ -24,25 +24,31 @@
 
 <div class="indexPage">
     <div class="contentIndex">
-        <input class="username" placeholder="派友请登录" type="text">
+        <input class="username" name="h5logincode" placeholder="派友请登录" type="text">
     </div>
     <div class="contentPage">
         <div class="bgContent">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_1.jpg" alt="">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_2.jpg" alt="">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_3.jpg" alt="">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_4.jpg" alt="">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_5.jpg" alt="">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_6.jpg" alt="">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_7.jpg" alt="">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_8.jpg" alt="">
-            <img class="bg_cell lazy" data-original="./assets/images/bg_9.jpg" alt="">
+            <img class="bg_cell lazy" src="./assets/images/bg_01.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_02.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_03.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_04.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_05.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_06.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_07.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_08.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_09.jpg" alt="">
         </div>
         <div class="clickBtn fiveYear" data-popname="fiveYear"></div>
         <div class="clickBtn tenYear" data-popname="tenYear"></div>
         <div class="clickBtn kyxf" data-popname="kyxf"></div>
         <div class="clickBtn nddj" data-popname="nddj"></div>
+
+        <div id="shakeHandImg" class="hand"></div>
+       <!-- <div class="shake-img-section">
+            <img id="shakeHandImg" src="./img/shake_vibrate_img.png" alt="shake_vibrate_img" />
+        </div>-->
         <div class="J_Shake"></div>
+
         <div class="videoBox">
             <video class="videoDom" controls poster="./assets/images/video-poster.png" preload="auto" webkit-playsinline="webkit-playsinline">
                 <source src="./assets/video/video.mp4" type="video/mp4">
@@ -88,6 +94,8 @@
         <div class="wishImg" style="background-image: url('./assets/images/wish/10.jpg')"></div>
     </div>
 </div>
+<audio id="shakemusic" src="./assets/audio/shake.mp3" style="display: none;"></audio>
+<audio id="openmusic" src="./assets/audio/open.mp3" style="display: none;"></audio>
 
 <script src="//cdn.bootcss.com/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
 <!--外部资源从这里开始-->
@@ -96,8 +104,13 @@
 <script class="external" src="./assets/scripts/captcha-handler.min.js"></script>
 <script class="external" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script class="external" src="./assets/scripts/useWxApi.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
 <script>
     (function (window) {
+        var vConsole = new VConsole();
+
+
+        var isCompanyEmployee = false;
         var ua = window.navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == 'micromessenger') {
             var eventData = {
@@ -107,7 +120,29 @@
                 // imgUrl: 'https://jx3.xoyo.com/zt/2018/06/05/wxshare_logo/wx_share.jpg?pc_hash&#x3D;th5Q7g'
             };
             usewxapi.getSignature(eventData);
-        }
+        };
+
+        // 员工名字输入正确才能进入页面
+        var employeesArr = ["陈璐浩","任政华","何桂崔","张雷H","林树贤","陈培玉","梁家进","陈振"];
+        $('.contentIndex input[name="h5logincode"]').on('blur', function(){
+            var _this = $(this);
+            var username = $.trim(_this.val());
+            if(employeesArr.indexOf(username) > -1){
+                $('.contentPage').fadeIn();
+                isCompanyEmployee = true;
+                $("img.lazy").lazyload({
+                    placeholder : "./assets/images/placeholder.png", //用图片提前占位
+                    threshold: 1000,
+                    container: $(".indexPage"),
+                    failurelimit: 2,
+                    effect: "fadeIn",
+                    skip_invisible : true
+                });
+            }else{
+                isCompanyEmployee = false;
+                $('.contentPage').fadeOut();
+            }
+        });
 
         // 显示弹窗
         $('.clickBtn').on('click', function () {
@@ -125,34 +160,127 @@
         });
 
 
-        $("img.lazy").lazyload({
-            threshold: 1000,
-            container: $(".indexPage"),
-            failurelimit: 2,
-            effect: "fadeIn"
-        });
+        var shakeAudio = document.getElementById('shakemusic');
+        var openAudio = document.getElementById('openmusic');
 
         function getRandom() {
             return Math.floor((Math.random() * 10));
         };
+
+
+        function showWishPop(){
+            var username = $.trim($('input.username').val());
+            if(username){
+                $('.J_username').html(username)
+            }
+            var index  = getRandom();
+            $('.wishPopBox .wishImg').hide().eq(index).show()
+
+            shakeAudio.play(); // 摇一摇动画效果
+            var shakeHandImg = document.getElementById("shakeHandImg");
+            shakeHandImg.classList.add("tada");
+            shakeHandImg.classList.add("animated");
+            shakeHandImg.addEventListener("animationend", function () {
+                shakeHandImg.classList.remove("tada");
+                shakeHandImg.classList.remove("animated");
+            });
+            setTimeout(function () {
+                openAudio.play();
+                $('.wishPopBox').fadeIn();
+            }, 1000);
+        }
+
+        // 显示随机祝福
+        $('.J_Shake').on('click',function () {
+            showWishPop()
+        });
 
         // 关闭祝福弹窗
         $('.wishPopBox').on('click',function () {
             $('.wishPopBox,.wishImg').fadeOut();
         });
 
-        // 显示随机祝福
-        $('.J_Shake').on('click',function () {
-            var username = $.trim($('input.username').val());
-            if(username){
-                $('.J_username').html(username)
+        var shakeObj = {
+            // 摇一摇加锁 防止重复触发
+            shakeFlag: true,
+            // 初始化
+            init: function init() {
+                this.handleShake();
+            },
+            // 摇一摇
+            handleShake: function handleShake() {
+                if(!isCompanyEmployee){
+                    return false;
+                }
+                // 运动事件监听
+                if (window.DeviceMotionEvent) {
+                    window.addEventListener("devicemotion", deviceMotionHandler, false);
+                } else {
+                    console.log("该浏览器不支持摇一摇功能");
+                } // 获取加速度信息
+                // 通过监听上一步获取到的x, y, z 值在一定时间范围内的变化率，进行设备是否有进行晃动的判断。
+                // 而为了防止正常移动的误判，需要给该变化率设置一个合适的临界值。
+                var SHAKETHRESHOLD = 4000;
+                var lastUpdate = 0;
+                var x,
+                    y,
+                    z,
+                    lastX = 0,
+                    lastY = 0,
+                    lastZ = 0; // 摇一摇音乐
+                var shakeAudio = document.getElementById('shakemusic');
+                var openAudio = document.getElementById('openmusic');
+                var self = this;
+                function deviceMotionHandler(eventData) {
+                    var acceleration = eventData.accelerationIncludingGravity;
+                    var curTime = new Date().getTime();
+                    if (curTime - lastUpdate > 50) {
+                        var diffTime = curTime - lastUpdate;
+                        lastUpdate = curTime;
+                        x = acceleration.x;
+                        y = acceleration.y;
+                        z = acceleration.z;
+                        var speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 10000;
+                        if (speed > SHAKETHRESHOLD) {
+                            if (self.shakeFlag) {
+                                self.shakeFlag = false; // 手机振动功能，只有安卓手机支持
+                                self.useVibrateAction();
+                                shakeAudio.play(); // 摇一摇动画效果
+                                var shakeHandImg = document.getElementById("shakeHandImg");
+                                shakeHandImg.classList.add("tada");
+                                shakeHandImg.classList.add("animated");
+                                shakeHandImg.addEventListener("animationend", function () {
+                                    shakeHandImg.classList.remove("tada");
+                                    shakeHandImg.classList.remove("animated");
+                                });
+                                setTimeout(function () {
+                                    shakeAudio.pause();
+                                    openAudio.play();
+                                    // alert("恭喜你，摇到漂亮妹纸一枚!"); // Do something
+                                    self.shakeFlag = true; // 调用摇一摇接口
+                                    // self.shakeSendCoupon();
+                                }, 1000);
+                            }
+                        }
+                        lastX = x;
+                        lastY = y;
+                        lastZ = z;
+                    }
+                }
+            },
+            // 调用手机振动功能
+            useVibrateAction: function useVibrateAction() {
+                navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate ||
+                    navigator.msVibrate;
+                if (navigator.vibrate) {
+                    console.log("手机振动");
+                    navigator.vibrate(1000); // 振动时间毫秒数
+                } else {
+                    console.log("该浏览器不支持振动功能");
+                }
             }
-            var index  = getRandom();
-            console.log(index)
-            $('.wishPopBox .wishImg').hide().eq(index).show()
-            $('.wishPopBox').fadeIn();
-        })
-
+        };
+        shakeObj.init();
 
     })(window);
 </script>

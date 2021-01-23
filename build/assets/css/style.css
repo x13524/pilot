@@ -38,6 +38,7 @@
     background-repeat: no-repeat;
     margin: 0 auto;
     position: relative;
+    display: none;
 }
 
 .bg_cell {
@@ -234,6 +235,11 @@ input.username:-ms-input-placeholder {
     top: 216px;
 }
 
+.content-frame-back:after {
+    display: none;
+    content: url("../images/wish/1.jpg") url("../images/wish/2.jpg") url("../images/wish/3.jpg") url("../images/wish/4.jpg") url("../images/wish/5.jpg") url("../images/wish/6.jpg") url("../images/wish/7.jpg") url("../images/wish/8.jpg") url("../images/wish/9.jpg") url("../images/wish/10.jpg");
+}
+
 .headBox img {
     display: block;
     width: 100%;
@@ -271,3 +277,65 @@ input.username:-ms-input-placeholder {
     margin: 0 auto;
     top: 14536px;
 }
+
+.hand {
+    position: absolute;
+    background-image: url("../images/hand.png");
+    width: 336px;
+    height: 441px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 14790px;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+@-webkit-keyframes tada {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    10%, 20% {
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%, 50%, 70%, 90% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%, 60%, 80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+@keyframes tada {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    10%, 20% {
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%, 50%, 70%, 90% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%, 60%, 80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.tada {
+    -webkit-animation-name: tada;
+    animation-name: tada
+}
+
+
