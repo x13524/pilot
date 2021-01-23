@@ -235,6 +235,11 @@ input.username:-ms-input-placeholder {
     top: 216px;
 }
 
+.content-frame-back:after {
+    display: none;
+    content: url("../images/wish/1.jpg") url("../images/wish/2.jpg") url("../images/wish/3.jpg") url("../images/wish/4.jpg") url("../images/wish/5.jpg") url("../images/wish/6.jpg") url("../images/wish/7.jpg") url("../images/wish/8.jpg") url("../images/wish/9.jpg") url("../images/wish/10.jpg");
+}
+
 .headBox img {
     display: block;
     width: 100%;
@@ -273,7 +278,7 @@ input.username:-ms-input-placeholder {
     top: 14536px;
 }
 
-.hand{
+.hand {
     position: absolute;
     background-image: url("../images/hand.png");
     width: 336px;
@@ -285,58 +290,52 @@ input.username:-ms-input-placeholder {
 }
 
 .animated {
-    -webkit-animation-duration:1s;
-    animation-duration:1s;
-    -webkit-animation-fill-mode:both;
-    animation-fill-mode:both
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
 }
+
 @-webkit-keyframes tada {
-    from {
-        -webkit-transform:scale3d(1, 1, 1);
-        transform:scale3d(1, 1, 1)
+    0% {
+        transform: scale3d(1, 1, 1);
     }
     10%, 20% {
-        -webkit-transform:scale3d(.9, .9, .9) rotate3d(0, 0, 1, -6deg);
-        transform:scale3d(.9, .9, .9) rotate3d(0, 0, 1, -6deg)
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
     }
     30%, 50%, 70%, 90% {
-        -webkit-transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, 6deg);
-        transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, 6deg)
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
     }
+
     40%, 60%, 80% {
-        -webkit-transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, -6deg);
-        transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, -6deg)
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
     }
-    to {
-        -webkit-transform:scale3d(1, 1, 1);
-        transform:scale3d(1, 1, 1)
+    100% {
+        transform: scale3d(1, 1, 1);
     }
 }
 @keyframes tada {
-    from {
-        -webkit-transform:scale3d(1, 1, 1);
-        transform:scale3d(1, 1, 1)
+    0% {
+        transform: scale3d(1, 1, 1);
     }
     10%, 20% {
-        -webkit-transform:scale3d(.9, .9, .9) rotate3d(0, 0, 1, -6deg);
-        transform:scale3d(.9, .9, .9) rotate3d(0, 0, 1, -6deg)
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
     }
     30%, 50%, 70%, 90% {
-        -webkit-transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, 6deg);
-        transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, 6deg)
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
     }
+
     40%, 60%, 80% {
-        -webkit-transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, -6deg);
-        transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, -6deg)
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
     }
-    to {
-        -webkit-transform:scale3d(1, 1, 1);
-        transform:scale3d(1, 1, 1)
+    100% {
+        transform: scale3d(1, 1, 1);
     }
 }
+
 .tada {
-    -webkit-animation-name:tada;
-    animation-name:tada
+    -webkit-animation-name: tada;
+    animation-name: tada
 }
 
 

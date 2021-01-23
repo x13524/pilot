@@ -104,8 +104,12 @@
 <script class="external" src="./assets/scripts/captcha-handler.min.js"></script>
 <script class="external" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script class="external" src="./assets/scripts/useWxApi.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
 <script>
     (function (window) {
+        var vConsole = new VConsole();
+
+
         var isCompanyEmployee = false;
         var ua = window.navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == 'micromessenger') {
@@ -120,7 +124,7 @@
 
         // 员工名字输入正确才能进入页面
         var employeesArr = ["陈璐浩","任政华","何桂崔","张雷H","林树贤","陈培玉","梁家进","陈振"];
-        $('.contentIndex input[name="h5logincode"]').on('change', function(){
+        $('.contentIndex input[name="h5logincode"]').on('blur', function(){
             var _this = $(this);
             var username = $.trim(_this.val());
             if(employeesArr.indexOf(username) > -1){
@@ -140,7 +144,6 @@
             }
         });
 
-
         // 显示弹窗
         $('.clickBtn').on('click', function () {
             $('.indexPage').addClass('overflow-hidden');
@@ -157,30 +160,45 @@
         });
 
 
-
+        var shakeAudio = document.getElementById('shakemusic');
+        var openAudio = document.getElementById('openmusic');
 
         function getRandom() {
             return Math.floor((Math.random() * 10));
         };
 
-        // 关闭祝福弹窗
-        $('.wishPopBox').on('click',function () {
-            $('.wishPopBox,.wishImg').fadeOut();
-        });
 
-        // 显示随机祝福
-        $('.J_Shake').on('click',function () {
+        function showWishPop(){
             var username = $.trim($('input.username').val());
             if(username){
                 $('.J_username').html(username)
             }
             var index  = getRandom();
-            console.log(index)
             $('.wishPopBox .wishImg').hide().eq(index).show()
-            $('.wishPopBox').fadeIn();
+
+            shakeAudio.play(); // 摇一摇动画效果
+            var shakeHandImg = document.getElementById("shakeHandImg");
+            shakeHandImg.classList.add("tada");
+            shakeHandImg.classList.add("animated");
+            shakeHandImg.addEventListener("animationend", function () {
+                shakeHandImg.classList.remove("tada");
+                shakeHandImg.classList.remove("animated");
+            });
+            setTimeout(function () {
+                openAudio.play();
+                $('.wishPopBox').fadeIn();
+            }, 1000);
+        }
+
+        // 显示随机祝福
+        $('.J_Shake').on('click',function () {
+            showWishPop()
         });
 
-
+        // 关闭祝福弹窗
+        $('.wishPopBox').on('click',function () {
+            $('.wishPopBox,.wishImg').fadeOut();
+        });
 
         var shakeObj = {
             // 摇一摇加锁 防止重复触发
@@ -192,15 +210,13 @@
             // 摇一摇
             handleShake: function handleShake() {
                 if(!isCompanyEmployee){
-                    console.log('还未输入正确的用户名')
                     return false;
                 }
-
                 // 运动事件监听
                 if (window.DeviceMotionEvent) {
                     window.addEventListener("devicemotion", deviceMotionHandler, false);
                 } else {
-                    alert("该浏览器不支持摇一摇功能, 点一下获取祝福吧~");
+                    console.log("该浏览器不支持摇一摇功能");
                 } // 获取加速度信息
                 // 通过监听上一步获取到的x, y, z 值在一定时间范围内的变化率，进行设备是否有进行晃动的判断。
                 // 而为了防止正常移动的误判，需要给该变化率设置一个合适的临界值。
@@ -240,7 +256,7 @@
                                 setTimeout(function () {
                                     shakeAudio.pause();
                                     openAudio.play();
-                                    alert("恭喜你，摇到漂亮妹纸一枚!"); // Do something
+                                    // alert("恭喜你，摇到漂亮妹纸一枚!"); // Do something
                                     self.shakeFlag = true; // 调用摇一摇接口
                                     // self.shakeSendCoupon();
                                 }, 1000);
@@ -265,10 +281,6 @@
             }
         };
         shakeObj.init();
-
-
-
-
 
     })(window);
 </script>
