@@ -237,7 +237,6 @@ input.username:-ms-input-placeholder {
 
 .content-frame-back:after {
     display: none;
-    content: url("../images/wish/1.jpg") url("../images/wish/2.jpg") url("../images/wish/3.jpg") url("../images/wish/4.jpg") url("../images/wish/5.jpg") url("../images/wish/6.jpg") url("../images/wish/7.jpg") url("../images/wish/8.jpg") url("../images/wish/9.jpg") url("../images/wish/10.jpg");
 }
 
 .headBox img {
@@ -339,3 +338,14 @@ input.username:-ms-input-placeholder {
 }
 
 
+.preloadImage{
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -50px;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    overflow: hidden;
+}
