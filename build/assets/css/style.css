@@ -38,6 +38,7 @@
     background-repeat: no-repeat;
     margin: 0 auto;
     position: relative;
+    display: none;
 }
 
 .bg_cell {
@@ -271,3 +272,71 @@ input.username:-ms-input-placeholder {
     margin: 0 auto;
     top: 14536px;
 }
+
+.hand{
+    position: absolute;
+    background-image: url("../images/hand.png");
+    width: 336px;
+    height: 441px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 14790px;
+}
+
+.animated {
+    -webkit-animation-duration:1s;
+    animation-duration:1s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+@-webkit-keyframes tada {
+    from {
+        -webkit-transform:scale3d(1, 1, 1);
+        transform:scale3d(1, 1, 1)
+    }
+    10%, 20% {
+        -webkit-transform:scale3d(.9, .9, .9) rotate3d(0, 0, 1, -6deg);
+        transform:scale3d(.9, .9, .9) rotate3d(0, 0, 1, -6deg)
+    }
+    30%, 50%, 70%, 90% {
+        -webkit-transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, 6deg);
+        transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, 6deg)
+    }
+    40%, 60%, 80% {
+        -webkit-transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, -6deg);
+        transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, -6deg)
+    }
+    to {
+        -webkit-transform:scale3d(1, 1, 1);
+        transform:scale3d(1, 1, 1)
+    }
+}
+@keyframes tada {
+    from {
+        -webkit-transform:scale3d(1, 1, 1);
+        transform:scale3d(1, 1, 1)
+    }
+    10%, 20% {
+        -webkit-transform:scale3d(.9, .9, .9) rotate3d(0, 0, 1, -6deg);
+        transform:scale3d(.9, .9, .9) rotate3d(0, 0, 1, -6deg)
+    }
+    30%, 50%, 70%, 90% {
+        -webkit-transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, 6deg);
+        transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, 6deg)
+    }
+    40%, 60%, 80% {
+        -webkit-transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, -6deg);
+        transform:translateY(-26.66667vw) scale3d(1.4, 1.4, 1.4) rotate3d(0, 0, 1, -6deg)
+    }
+    to {
+        -webkit-transform:scale3d(1, 1, 1);
+        transform:scale3d(1, 1, 1)
+    }
+}
+.tada {
+    -webkit-animation-name:tada;
+    animation-name:tada
+}
+
+
