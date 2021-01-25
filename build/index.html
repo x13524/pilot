@@ -11,6 +11,8 @@
 
     <title>年会</title>
     <link href="./assets/css/reset.css" rel="stylesheet">
+    <link href="./assets/css/animate.min.css" rel="stylesheet">
+    <link href="./assets/css/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script>
         window.__META_FLEXIBLE__ = {
@@ -24,6 +26,11 @@
 
 <div class="indexPage">
     <div class="contentIndex">
+        <div class=" animated fadeInDown come"></div>
+        <div class=" animated fadeInUp index2021"></div>
+        <div class=" pilotLogo"></div>
+        <div class="tentacles arrow-left"></div>
+        <div class="tentacles arrow-right"></div>
         <input class="username" name="h5logincode" placeholder="派友请登录" type="text">
     </div>
     <div class="contentPage">
@@ -37,16 +44,49 @@
             <img class="bg_cell lazy" data-original="./assets/images/bg_07.jpg" alt="">
             <img class="bg_cell lazy" data-original="./assets/images/bg_08.jpg" alt="">
             <img class="bg_cell lazy" data-original="./assets/images/bg_09.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_10.jpg" alt="">
         </div>
+
+        <!--      动画部分内容  -->
+        <div data-aos="fade-down" class="posAnimate text-licheng"></div>
+        <div data-aos="fade-down" class="posAnimate text-nianxian"></div>
+        <div data-aos="fade-down" class="posAnimate img-10"></div>
+        <div data-aos="fade-down" class="posAnimate img-5"></div>
+        <div data-aos="fade-down" class="posAnimate text-kangyi"></div>
+        <div data-aos="fade-down" class="posAnimate img-kangyi"></div>
+        <div data-aos="fade-down" class="posAnimate text-dajiang"></div>
+        <div data-aos="fade-down" class="posAnimate img-dajiang"></div>
+        <!-- 左右机器臂动画-->
+        <div data-aos="fade-down" class="posAnimate text-2021"></div>
+        <div class="arrow-box" style="top: 13743px;">
+            <div class="tentacles arrow-left"></div>
+            <div class="tentacles arrow-right"></div>
+        </div>
+        <div data-aos="fade-down" class="posAnimate text-zhufu"></div>
+        <div data-aos="fade-down" class="posAnimate img-click hand" id="shakeHandImg"></div>
+
+        <!-- 左右机器臂动画-->
+        <div data-aos="fade-down" class="posAnimate text-haoyun"></div>
+        <div class="arrow-box" style="top: 15709px;">
+            <div class="tentacles arrow-left"></div>
+            <div class="tentacles arrow-right"></div>
+        </div>
+        <div data-aos="fade-down" class="posAnimate text-xinchun"></div>
+        <div data-aos="fade-down" class="posAnimate img-niu"></div>
+        <div data-aos="fade-down" class="posAnimate text-niu"></div>
+        <div class="arrow-box" style="top: 17672px;">
+            <div class="tentacles arrow-left"></div>
+            <div class="tentacles arrow-right"></div>
+        </div>
+
+
+
+        <!-- 点击按钮部分-->
         <div class="clickBtn fiveYear" data-popname="fiveYear"></div>
         <div class="clickBtn tenYear" data-popname="tenYear"></div>
         <div class="clickBtn kyxf" data-popname="kyxf"></div>
         <div class="clickBtn nddj" data-popname="nddj"></div>
 
-        <div id="shakeHandImg" class="hand"></div>
-       <!-- <div class="shake-img-section">
-            <img id="shakeHandImg" src="./img/shake_vibrate_img.png" alt="shake_vibrate_img" />
-        </div>-->
         <div class="J_Shake"></div>
 
         <div class="videoBox">
@@ -82,7 +122,7 @@
             <img src="./assets/images/wish/test-head.jpg" alt="">
         </div>
         <div class="usernameBox J_username">万事如意</div>
-        <div class="wishImg" style=" background-image: url('./assets/images/wish/1.jpg')"></div>
+        <div class="wishImg" style="background-image: url('./assets/images/wish/1.jpg')"></div>
         <div class="wishImg" style="background-image: url('./assets/images/wish/2.jpg')"></div>
         <div class="wishImg" style="background-image: url('./assets/images/wish/3.jpg')"></div>
         <div class="wishImg" style="background-image: url('./assets/images/wish/4.jpg')"></div>
@@ -97,19 +137,19 @@
 <audio id="shakemusic" src="./assets/audio/shake.mp3" style="display: none;"></audio>
 <audio id="openmusic" src="./assets/audio/open.mp3" style="display: none;"></audio>
 
+<div class="preloadImage"><img src="" alt=""></div>
+
 <script src="//cdn.bootcss.com/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
 <!--外部资源从这里开始-->
 <script class="external" src="./assets/scripts/jquery.min.js"></script>
 <script class="external" src="./assets/scripts/jquery.lazyload.min.js"></script>
+<script class="external" src="./assets/scripts/aos.js"></script>
 <script class="external" src="./assets/scripts/captcha-handler.min.js"></script>
 <script class="external" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script class="external" src="./assets/scripts/useWxApi.js"></script>
-<script src="//cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
 <script>
+
     (function (window) {
-        var vConsole = new VConsole();
-
-
         var isCompanyEmployee = false;
         var ua = window.navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == 'micromessenger') {
@@ -120,25 +160,33 @@
                 // imgUrl: 'https://jx3.xoyo.com/zt/2018/06/05/wxshare_logo/wx_share.jpg?pc_hash&#x3D;th5Q7g'
             };
             usewxapi.getSignature(eventData);
-        };
+        }
+
+        AOS.init({
+            offset: 0,
+            duration: 400,
+            easing: 'ease-in-sine',
+            // once: true
+        });
 
         // 员工名字输入正确才能进入页面
-        var employeesArr = ["陈璐浩","任政华","何桂崔","张雷H","林树贤","陈培玉","梁家进","陈振"];
-        $('.contentIndex input[name="h5logincode"]').on('blur', function(){
+        var employeesArr = ["陈璐浩", "任政华", "何桂崔", "张雷", "林树贤", "陈培玉", "梁家进", "陈振"];
+        $('.contentIndex input[name="h5logincode"]').on('blur focus', function () {
             var _this = $(this);
             var username = $.trim(_this.val());
-            if(employeesArr.indexOf(username) > -1){
-                $('.contentPage').fadeIn();
+            if (employeesArr.indexOf(username) > -1) {
+                $('.contentPage').show();
                 isCompanyEmployee = true;
                 $("img.lazy").lazyload({
-                    placeholder : "./assets/images/placeholder.png", //用图片提前占位
+                    placeholder: "./assets/images/placeholder.png", //用图片提前占位
                     threshold: 1000,
                     container: $(".indexPage"),
                     failurelimit: 2,
                     effect: "fadeIn",
-                    skip_invisible : true
+                    skip_invisible: true
                 });
-            }else{
+                AOS.refresh();
+            } else {
                 isCompanyEmployee = false;
                 $('.contentPage').fadeOut();
             }
@@ -146,17 +194,21 @@
 
         // 显示弹窗
         $('.clickBtn').on('click', function () {
-            $('.indexPage').addClass('overflow-hidden');
             var popName = $(this).data('popname');
             $('.pop_' + popName).show();
             $('.popBox').fadeIn();
             $('.popBox').scrollTop(0);
+            $('body').css({
+                "overflow-y":"hidden"
+            });
         });
 
         // 隐藏弹窗
         $('.popContent').on('click', function () {
             $('.popBox,.popContent').fadeOut();
-            $('.indexPage').removeClass('overflow-hidden');
+            $('body').css({
+                "overflow-y":"auto"
+            });
         });
 
 
@@ -167,121 +219,44 @@
             return Math.floor((Math.random() * 10));
         };
 
-
-        function showWishPop(){
+        function showWishPop() {
             var username = $.trim($('input.username').val());
-            if(username){
+            if (username) {
                 $('.J_username').html(username)
             }
-            var index  = getRandom();
+            var index = getRandom();
+            $('.preloadImage img').attr({ src: './assets/images/wish/' + index + '.jpg' })
             $('.wishPopBox .wishImg').hide().eq(index).show()
 
             shakeAudio.play(); // 摇一摇动画效果
             var shakeHandImg = document.getElementById("shakeHandImg");
             shakeHandImg.classList.add("tada");
-            shakeHandImg.classList.add("animated");
+            shakeHandImg.classList.add("animatedHand");
             shakeHandImg.addEventListener("animationend", function () {
                 shakeHandImg.classList.remove("tada");
-                shakeHandImg.classList.remove("animated");
+                shakeHandImg.classList.remove("animatedHand");
             });
             setTimeout(function () {
                 openAudio.play();
                 $('.wishPopBox').fadeIn();
+                $('body').css({
+                    "overflow-y":"hidden"
+                });
             }, 1000);
         }
 
         // 显示随机祝福
-        $('.J_Shake').on('click',function () {
+        $('.J_Shake').on('click', function () {
             showWishPop()
         });
 
         // 关闭祝福弹窗
-        $('.wishPopBox').on('click',function () {
+        $('.wishPopBox').on('click', function () {
             $('.wishPopBox,.wishImg').fadeOut();
+            $('body').css({
+                "overflow-y":"auto"
+            });
         });
-
-        var shakeObj = {
-            // 摇一摇加锁 防止重复触发
-            shakeFlag: true,
-            // 初始化
-            init: function init() {
-                this.handleShake();
-            },
-            // 摇一摇
-            handleShake: function handleShake() {
-                if(!isCompanyEmployee){
-                    return false;
-                }
-                // 运动事件监听
-                if (window.DeviceMotionEvent) {
-                    window.addEventListener("devicemotion", deviceMotionHandler, false);
-                } else {
-                    console.log("该浏览器不支持摇一摇功能");
-                } // 获取加速度信息
-                // 通过监听上一步获取到的x, y, z 值在一定时间范围内的变化率，进行设备是否有进行晃动的判断。
-                // 而为了防止正常移动的误判，需要给该变化率设置一个合适的临界值。
-                var SHAKETHRESHOLD = 4000;
-                var lastUpdate = 0;
-                var x,
-                    y,
-                    z,
-                    lastX = 0,
-                    lastY = 0,
-                    lastZ = 0; // 摇一摇音乐
-                var shakeAudio = document.getElementById('shakemusic');
-                var openAudio = document.getElementById('openmusic');
-                var self = this;
-                function deviceMotionHandler(eventData) {
-                    var acceleration = eventData.accelerationIncludingGravity;
-                    var curTime = new Date().getTime();
-                    if (curTime - lastUpdate > 50) {
-                        var diffTime = curTime - lastUpdate;
-                        lastUpdate = curTime;
-                        x = acceleration.x;
-                        y = acceleration.y;
-                        z = acceleration.z;
-                        var speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 10000;
-                        if (speed > SHAKETHRESHOLD) {
-                            if (self.shakeFlag) {
-                                self.shakeFlag = false; // 手机振动功能，只有安卓手机支持
-                                self.useVibrateAction();
-                                shakeAudio.play(); // 摇一摇动画效果
-                                var shakeHandImg = document.getElementById("shakeHandImg");
-                                shakeHandImg.classList.add("tada");
-                                shakeHandImg.classList.add("animated");
-                                shakeHandImg.addEventListener("animationend", function () {
-                                    shakeHandImg.classList.remove("tada");
-                                    shakeHandImg.classList.remove("animated");
-                                });
-                                setTimeout(function () {
-                                    shakeAudio.pause();
-                                    openAudio.play();
-                                    // alert("恭喜你，摇到漂亮妹纸一枚!"); // Do something
-                                    self.shakeFlag = true; // 调用摇一摇接口
-                                    // self.shakeSendCoupon();
-                                }, 1000);
-                            }
-                        }
-                        lastX = x;
-                        lastY = y;
-                        lastZ = z;
-                    }
-                }
-            },
-            // 调用手机振动功能
-            useVibrateAction: function useVibrateAction() {
-                navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate ||
-                    navigator.msVibrate;
-                if (navigator.vibrate) {
-                    console.log("手机振动");
-                    navigator.vibrate(1000); // 振动时间毫秒数
-                } else {
-                    console.log("该浏览器不支持振动功能");
-                }
-            }
-        };
-        shakeObj.init();
-
     })(window);
 </script>
 </body>
