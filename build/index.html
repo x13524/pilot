@@ -11,6 +11,8 @@
 
     <title>年会</title>
     <link href="./assets/css/reset.css" rel="stylesheet">
+    <link href="./assets/css/animate.min.css" rel="stylesheet">
+    <link href="./assets/css/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script>
         window.__META_FLEXIBLE__ = {
@@ -24,6 +26,11 @@
 
 <div class="indexPage">
     <div class="contentIndex">
+        <div class=" animated fadeInDown come"></div>
+        <div class=" animated fadeInUp index2021"></div>
+        <div class=" pilotLogo"></div>
+        <div class="tentacles arrow-left"></div>
+        <div class="tentacles arrow-right"></div>
         <input class="username" name="h5logincode" placeholder="派友请登录" type="text">
     </div>
     <div class="contentPage">
@@ -37,16 +44,49 @@
             <img class="bg_cell lazy" data-original="./assets/images/bg_07.jpg" alt="">
             <img class="bg_cell lazy" data-original="./assets/images/bg_08.jpg" alt="">
             <img class="bg_cell lazy" data-original="./assets/images/bg_09.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_10.jpg" alt="">
         </div>
+
+        <!--      动画部分内容  -->
+        <div data-aos="fade-down" class="posAnimate text-licheng"></div>
+        <div data-aos="fade-down" class="posAnimate text-nianxian"></div>
+        <div data-aos="fade-down" class="posAnimate img-10"></div>
+        <div data-aos="fade-down" class="posAnimate img-5"></div>
+        <div data-aos="fade-down" class="posAnimate text-kangyi"></div>
+        <div data-aos="fade-down" class="posAnimate img-kangyi"></div>
+        <div data-aos="fade-down" class="posAnimate text-dajiang"></div>
+        <div data-aos="fade-down" class="posAnimate img-dajiang"></div>
+        <!-- 左右机器臂动画-->
+        <div data-aos="fade-down" class="posAnimate text-2021"></div>
+        <div class="arrow-box" style="top: 13743px;">
+            <div class="tentacles arrow-left"></div>
+            <div class="tentacles arrow-right"></div>
+        </div>
+        <div data-aos="fade-down" class="posAnimate text-zhufu"></div>
+        <div data-aos="fade-down" class="posAnimate img-click hand" id="shakeHandImg"></div>
+
+        <!-- 左右机器臂动画-->
+        <div data-aos="fade-down" class="posAnimate text-haoyun"></div>
+        <div class="arrow-box" style="top: 15709px;">
+            <div class="tentacles arrow-left"></div>
+            <div class="tentacles arrow-right"></div>
+        </div>
+        <div data-aos="fade-down" class="posAnimate text-xinchun"></div>
+        <div data-aos="fade-down" class="posAnimate img-niu"></div>
+        <div data-aos="fade-down" class="posAnimate text-niu"></div>
+        <div class="arrow-box" style="top: 17672px;">
+            <div class="tentacles arrow-left"></div>
+            <div class="tentacles arrow-right"></div>
+        </div>
+
+
+
+        <!-- 点击按钮部分-->
         <div class="clickBtn fiveYear" data-popname="fiveYear"></div>
         <div class="clickBtn tenYear" data-popname="tenYear"></div>
         <div class="clickBtn kyxf" data-popname="kyxf"></div>
         <div class="clickBtn nddj" data-popname="nddj"></div>
 
-        <div id="shakeHandImg" class="hand"></div>
-        <!-- <div class="shake-img-section">
-             <img id="shakeHandImg" src="./img/shake_vibrate_img.png" alt="shake_vibrate_img" />
-         </div>-->
         <div class="J_Shake"></div>
 
         <div class="videoBox">
@@ -103,15 +143,13 @@
 <!--外部资源从这里开始-->
 <script class="external" src="./assets/scripts/jquery.min.js"></script>
 <script class="external" src="./assets/scripts/jquery.lazyload.min.js"></script>
+<script class="external" src="./assets/scripts/aos.js"></script>
 <script class="external" src="./assets/scripts/captcha-handler.min.js"></script>
 <script class="external" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script class="external" src="./assets/scripts/useWxApi.js"></script>
-<script src="//cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
 <script>
+
     (function (window) {
-        var vConsole = new VConsole();
-
-
         var isCompanyEmployee = false;
         var ua = window.navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == 'micromessenger') {
@@ -123,15 +161,21 @@
             };
             usewxapi.getSignature(eventData);
         }
-        ;
+
+        AOS.init({
+            offset: 0,
+            duration: 400,
+            easing: 'ease-in-sine',
+            // once: true
+        });
 
         // 员工名字输入正确才能进入页面
-        var employeesArr = ["陈璐浩", "任政华", "何桂崔", "张雷H", "林树贤", "陈培玉", "梁家进", "陈振"];
-        $('.contentIndex input[name="h5logincode"]').on('blur', function () {
+        var employeesArr = ["陈璐浩", "任政华", "何桂崔", "张雷", "林树贤", "陈培玉", "梁家进", "陈振"];
+        $('.contentIndex input[name="h5logincode"]').on('blur focus', function () {
             var _this = $(this);
             var username = $.trim(_this.val());
             if (employeesArr.indexOf(username) > -1) {
-                $('.contentPage').fadeIn();
+                $('.contentPage').show();
                 isCompanyEmployee = true;
                 $("img.lazy").lazyload({
                     placeholder: "./assets/images/placeholder.png", //用图片提前占位
@@ -141,6 +185,7 @@
                     effect: "fadeIn",
                     skip_invisible: true
                 });
+                AOS.refresh();
             } else {
                 isCompanyEmployee = false;
                 $('.contentPage').fadeOut();
@@ -149,17 +194,21 @@
 
         // 显示弹窗
         $('.clickBtn').on('click', function () {
-            $('.indexPage').addClass('overflow-hidden');
             var popName = $(this).data('popname');
             $('.pop_' + popName).show();
             $('.popBox').fadeIn();
             $('.popBox').scrollTop(0);
+            $('body').css({
+                "overflow-y":"hidden"
+            });
         });
 
         // 隐藏弹窗
         $('.popContent').on('click', function () {
             $('.popBox,.popContent').fadeOut();
-            $('.indexPage').removeClass('overflow-hidden');
+            $('body').css({
+                "overflow-y":"auto"
+            });
         });
 
 
@@ -182,14 +231,17 @@
             shakeAudio.play(); // 摇一摇动画效果
             var shakeHandImg = document.getElementById("shakeHandImg");
             shakeHandImg.classList.add("tada");
-            shakeHandImg.classList.add("animated");
+            shakeHandImg.classList.add("animatedHand");
             shakeHandImg.addEventListener("animationend", function () {
                 shakeHandImg.classList.remove("tada");
-                shakeHandImg.classList.remove("animated");
+                shakeHandImg.classList.remove("animatedHand");
             });
             setTimeout(function () {
                 openAudio.play();
                 $('.wishPopBox').fadeIn();
+                $('body').css({
+                    "overflow-y":"hidden"
+                });
             }, 1000);
         }
 
@@ -201,6 +253,9 @@
         // 关闭祝福弹窗
         $('.wishPopBox').on('click', function () {
             $('.wishPopBox,.wishImg').fadeOut();
+            $('body').css({
+                "overflow-y":"auto"
+            });
         });
     })(window);
 </script>
