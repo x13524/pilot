@@ -31,7 +31,9 @@
         <div class=" pilotLogo"></div>
         <div class="tentacles arrow-left"></div>
         <div class="tentacles arrow-right"></div>
-        <input class="username" name="h5logincode" placeholder="派友请登录" type="text">
+        <div class="enterBtn employees"></div>
+        <div class="enterBtn tourists"></div>
+        <!--        <input class="username" name="h5logincode" placeholder="派友请登录" type="text">-->
     </div>
     <div class="contentPage">
         <div class="bgContent">
@@ -80,7 +82,6 @@
         </div>
 
 
-
         <!-- 点击按钮部分-->
         <div class="clickBtn fiveYear" data-popname="fiveYear"></div>
         <div class="clickBtn tenYear" data-popname="tenYear"></div>
@@ -97,6 +98,7 @@
     </div>
 </div>
 
+<!-- 奖品弹窗 -->
 <div class="popBox">
     <!--    十年员工弹出页-->
     <div class="popContent pop_tenYear">
@@ -116,6 +118,7 @@
     </div>
 </div>
 
+<!-- 祝福弹窗 -->
 <div class="wishPopBox">
     <div class="wishPopContent">
         <div class="headBox J_head">
@@ -137,7 +140,20 @@
 <audio id="shakemusic" src="./assets/audio/shake.mp3" style="display: none;"></audio>
 <audio id="openmusic" src="./assets/audio/open.mp3" style="display: none;"></audio>
 
-<div class="preloadImage"><img src="" alt=""></div>
+<!--登录弹窗-->
+<div class="loginBox">
+    <div class="loginRoot">
+        <div class="loginContent">
+            <input type="text" class="username">
+            <input type="text" class="department">
+        </div>
+        <div class="loginBtnBox">
+            <div class="submitBtn"></div>
+            <div class="closeBtn"></div>
+        </div>
+    </div>
+</div>
+
 
 <script src="//cdn.bootcss.com/es6-promise/4.1.1/es6-promise.auto.min.js"></script>
 <!--外部资源从这里开始-->
@@ -147,17 +163,18 @@
 <script class="external" src="./assets/scripts/captcha-handler.min.js"></script>
 <script class="external" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script class="external" src="./assets/scripts/useWxApi.js"></script>
-<script>
-
+<script class="external" src="./assets/scripts/list.js"></script>
+<script class="inline">
     (function (window) {
         var isCompanyEmployee = false;
+        var loginSuccess = false;
         var ua = window.navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == 'micromessenger') {
             var eventData = {
                 title: 'bia标题',
                 desc: '文案',
                 link: window.location.origin + window.location.pathname,
-                // imgUrl: 'https://jx3.xoyo.com/zt/2018/06/05/wxshare_logo/wx_share.jpg?pc_hash&#x3D;th5Q7g'
+                // imgUrl: 'https://abc.com/zt/2018/06/05/wxshare_logo/wx_share.jpg?pc_hash&#x3D;th5Q7g'
             };
             usewxapi.getSignature(eventData);
         }
@@ -170,27 +187,83 @@
         });
 
         // 员工名字输入正确才能进入页面
-        var employeesArr = ["陈璐浩", "任政华", "何桂崔", "张雷", "林树贤", "陈培玉", "梁家进", "陈振"];
-        $('.contentIndex input[name="h5logincode"]').on('blur focus', function () {
-            var _this = $(this);
-            var username = $.trim(_this.val());
-            if (employeesArr.indexOf(username) > -1) {
-                $('.contentPage').show();
-                isCompanyEmployee = true;
-                $("img.lazy").lazyload({
-                    placeholder: "./assets/images/placeholder.png", //用图片提前占位
-                    threshold: 1000,
-                    container: $(".indexPage"),
-                    failurelimit: 2,
-                    effect: "fadeIn",
-                    skip_invisible: true
-                });
-                AOS.refresh();
+        // $('.contentIndex input[name="h5logincode"]').on('blur focus', function () {
+        //     var _this = $(this);
+        //     var username = $.trim(_this.val());
+        //     if (personnelList.indexOf(username) > -1) {
+        //         $('.contentPage').show();
+        //         isCompanyEmployee = true;
+        //         $("img.lazy").lazyload({
+        //             placeholder: "./assets/images/placeholder.png", //用图片提前占位
+        //             threshold: 1000,
+        //             container: $(".indexPage"),
+        //             failurelimit: 2,
+        //             effect: "fadeIn",
+        //             skip_invisible: true
+        //         });
+        //         AOS.refresh();
+        //     } else {
+        //         isCompanyEmployee = false;
+        //         $('.contentPage').fadeOut();
+        //     }
+        // });
+
+
+        function enterContentPage() {
+            $('.contentPage').show();
+            isCompanyEmployee = true;
+            $("img.lazy").lazyload({
+                placeholder: "./assets/images/placeholder.png", //用图片提前占位
+                threshold: 1000,
+                container: $(".indexPage"),
+                failurelimit: 2,
+                effect: "fadeIn",
+                skip_invisible: true
+            });
+            AOS.refresh();
+            $("html,body").animate({ "scrollTop": 2140 }, 300);
+        }
+
+
+        // 登录弹窗
+        $('.contentIndex .employees').on('click', function () {
+            $('.loginBox').fadeIn();
+            $('body').css({
+                "overflow-y": "hidden"
+            });
+        });
+
+        $('.contentIndex .tourists').on('click', function () {
+            loginSuccess = false;
+            enterContentPage();
+        });
+
+        $('.loginBox .closeBtn').on('click', function () {
+            $('.loginBox').fadeOut()
+            $('body').css({
+                "overflow-y": "auto"
+            });
+        });
+
+        $('.loginBox .submitBtn').on('click', function () {
+            var username = $.trim($('input.username').val());
+            var department = $.trim($('input.department').val());
+            if (username && nameList.indexOf(username) > -1) {
+                if (department) {
+                    loginSuccess = true;
+                    $('.loginBox').fadeOut();
+                    $('body').css({
+                        "overflow-y": "auto"
+                    });
+                    enterContentPage();
+                } else {
+                    alert('请输入您所在的部门')
+                }
             } else {
-                isCompanyEmployee = false;
-                $('.contentPage').fadeOut();
+                alert('您输入的姓名不正确哦~')
             }
         });
+
 
         // 显示弹窗
         $('.clickBtn').on('click', function () {
@@ -199,7 +272,7 @@
             $('.popBox').fadeIn();
             $('.popBox').scrollTop(0);
             $('body').css({
-                "overflow-y":"hidden"
+                "overflow-y": "hidden"
             });
         });
 
@@ -207,7 +280,7 @@
         $('.popContent').on('click', function () {
             $('.popBox,.popContent').fadeOut();
             $('body').css({
-                "overflow-y":"auto"
+                "overflow-y": "auto"
             });
         });
 
@@ -225,7 +298,7 @@
                 $('.J_username').html(username)
             }
             var index = getRandom();
-            $('.preloadImage img').attr({ src: './assets/images/wish/' + index + '.jpg' })
+            // $('.preloadImage img').attr({ src: './assets/images/wish/' + index + '.jpg' })
             $('.wishPopBox .wishImg').hide().eq(index).show()
 
             shakeAudio.play(); // 摇一摇动画效果
@@ -240,7 +313,7 @@
                 openAudio.play();
                 $('.wishPopBox').fadeIn();
                 $('body').css({
-                    "overflow-y":"hidden"
+                    "overflow-y": "hidden"
                 });
             }, 1000);
         }
@@ -254,7 +327,7 @@
         $('.wishPopBox').on('click', function () {
             $('.wishPopBox,.wishImg').fadeOut();
             $('body').css({
-                "overflow-y":"auto"
+                "overflow-y": "auto"
             });
         });
     })(window);
