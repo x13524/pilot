@@ -513,6 +513,29 @@
     width: 100%;
 }
 
+.usernameBox {
+    z-index: 100;
+    background-image: url("../images/wish/name_bg.png");
+    width: 346px;
+    height: 111px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: 0 auto;
+    top: 475px;
+    font-size: 39px;
+    text-align: center;
+    line-height: 111px;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+}
+
 .J_Shake {
     position: absolute;
     left: 0;

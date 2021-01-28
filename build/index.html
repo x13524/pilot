@@ -110,11 +110,11 @@
     </div>
     <!--    年度大奖弹出页-->
     <div class="popContent pop_nddj">
-        <img src="./assets/images/nddj.png" alt="">
+        <img src="./assets/images/nddj.jpg" alt="">
     </div>
     <!--    抗疫先锋弹出页-->
     <div class="popContent pop_kyxf">
-        <img src="./assets/images/kyxf.png" alt="">
+        <img src="./assets/images/kyxf.jpg" alt="">
     </div>
 </div>
 
@@ -267,13 +267,17 @@
 
         // 显示弹窗
         $('.clickBtn').on('click', function () {
-            var popName = $(this).data('popname');
-            $('.pop_' + popName).show();
-            $('.popBox').fadeIn();
-            $('.popBox').scrollTop(0);
-            $('body').css({
-                "overflow-y": "hidden"
-            });
+            if(loginSuccess){
+                var popName = $(this).data('popname');
+                $('.pop_' + popName).show();
+                $('.popBox').fadeIn();
+                $('.popBox').scrollTop(0);
+                $('body').css({
+                    "overflow-y": "hidden"
+                });
+            }else{
+                alert('游客不能访问该信息哦~')
+            }
         });
 
         // 隐藏弹窗
