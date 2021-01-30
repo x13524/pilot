@@ -160,12 +160,13 @@
 .bgContent {
     pointer-events: none;
     user-select: none;
+    /*display: none;*/
 }
 
 .contentPage {
     /*background-image: url("../images/content/bg.jpg");*/
     /*background-image: url("../images/content/bg-del.jpg");*/
-    height: 18033px;
+    height: 19795px;
     width: 1080px;
     min-height: 15000px;
     background-repeat: no-repeat;
@@ -196,7 +197,7 @@
 }
 
 .text-nianxian {
-    top: 5966px;
+    top: 5778px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -208,7 +209,7 @@
 }
 
 .img-10 {
-    top: 6265px;
+    top: 6077px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -219,7 +220,7 @@
 }
 
 .img-5 {
-    top: 7300px;
+    top: 7112px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -230,7 +231,7 @@
 }
 
 .text-kangyi {
-    top: 8390px;
+    top: 8202px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -241,7 +242,7 @@
 }
 
 .img-kangyi {
-    top: 8740px;
+    top: 8552px;
     left: 240px;
     background-image: url("../images/content/img-kangyi.png");
     width: 657px;
@@ -250,7 +251,7 @@
 }
 
 .text-dajiang {
-    top: 10357px;
+    top: 10169px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -261,7 +262,7 @@
 }
 
 .img-dajiang {
-    top: 10663px;
+    top: 10475px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -272,7 +273,7 @@
 }
 
 .text-2021 {
-    top: 13743px;
+    top: 13555px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -284,7 +285,7 @@
 }
 
 .text-zhufu {
-    top: 14273px;
+    top: 14085px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -295,7 +296,7 @@
 }
 
 .img-click {
-    top: 14809px;
+    top: 14621px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -306,7 +307,7 @@
 }
 
 .text-haoyun {
-    top: 15709px;
+    top: 15521px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -317,15 +318,48 @@
     background-position: center;
 }
 
-.text-xinchun {
-    top: 16235px;
+.haoyun-fuli {
+    top: 16033px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    background-image: url("../images/content/text-xinchun.png");
-    width: 325px;
-    height: 75px;
+    background-image: url("../images/content/haoyun-fuli.png");
+    width: 451px;
+    height: 70px;
     background-repeat: no-repeat;
+}
+
+.haoyun-2021 {
+    top: 16222px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url("../images/content/haoyun-2021.png");
+    width: 129px;
+    height: 48px;
+    background-repeat: no-repeat;
+}
+
+.img-fuli {
+    top: 16582px;
+    left: 228px;
+    background-image: url("../images/content/img-fuli.png");
+    width: 643px;
+    height: 396px;
+    background-repeat: no-repeat;
+    animation: imgScale 2s ease-in-out 0s infinite;
+}
+
+.text-fuli {
+    top: 17454px;
+    background-image: url("../images/content/text-fuli.png");
+    width: 500px;
+    height: 109px;
+    background-repeat: no-repeat;
+    background-position: center;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 .img-niu {
@@ -339,8 +373,20 @@
     background-repeat: no-repeat;
 }
 
+.text-xianghe {
+    top: 17993px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url("../images/content/text-xianghe.png");
+    height: 86px;
+    background-repeat: no-repeat;
+    width: 315px;
+    background-position: center;
+}
+
 .text-niu {
-    top: 17672px;
+    top: 19426px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -437,7 +483,7 @@
 
 .videoBox {
     position: absolute;
-    top: 12607px;
+    top: 12416px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -543,7 +589,7 @@
     width: 1000px;
     height: 1370px;
     margin: 0 auto;
-    top: 14536px;
+    top: 14266px;
 }
 
 .hand {
@@ -597,6 +643,17 @@
     }
 }
 
+@keyframes imgScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 .tada {
     -webkit-animation-name: tada;
     animation-name: tada
@@ -629,7 +686,7 @@
 .loginRoot {
     width: 768px;
     height: 488px;
-    margin:  0 auto;
+    margin: 0 auto;
     position: relative;
     top: 30%;
 }

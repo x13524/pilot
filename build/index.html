@@ -47,6 +47,7 @@
             <img class="bg_cell lazy" data-original="./assets/images/bg_08.jpg" alt="">
             <img class="bg_cell lazy" data-original="./assets/images/bg_09.jpg" alt="">
             <img class="bg_cell lazy" data-original="./assets/images/bg_10.jpg" alt="">
+            <img class="bg_cell lazy" data-original="./assets/images/bg_11.jpg" alt="">
         </div>
 
         <!--      动画部分内容  -->
@@ -60,7 +61,7 @@
         <div data-aos="fade-down" class="posAnimate img-dajiang"></div>
         <!-- 左右机器臂动画-->
         <div data-aos="fade-down" class="posAnimate text-2021"></div>
-        <div class="arrow-box" style="top: 13743px;">
+        <div class="arrow-box" style="top: 13555px;">
             <div class="tentacles arrow-left"></div>
             <div class="tentacles arrow-right"></div>
         </div>
@@ -69,14 +70,24 @@
 
         <!-- 左右机器臂动画-->
         <div data-aos="fade-down" class="posAnimate text-haoyun"></div>
-        <div class="arrow-box" style="top: 15709px;">
+        <div class="arrow-box" style="top: 15521px;">
             <div class="tentacles arrow-left"></div>
             <div class="tentacles arrow-right"></div>
         </div>
-        <div data-aos="fade-down" class="posAnimate text-xinchun"></div>
-        <div data-aos="fade-down" class="posAnimate img-niu"></div>
+        <div data-aos="fade-down" class="posAnimate haoyun-fuli"></div>
+        <div data-aos="fade-down" class="posAnimate haoyun-2021"></div>
+        <div class="posAnimate img-fuli"></div>
+        <div data-aos="fade-down" class="posAnimate text-fuli"></div>
+        <div class="arrow-box" style="top:17466px">
+            <div class="tentacles arrow-left"></div>
+            <div class="tentacles arrow-right"></div>
+        </div>
+        <!--        <div data-aos="fade-down" class="posAnimate img-niu"></div>-->
+
+
+        <div data-aos="fade-down" class="posAnimate text-xianghe"></div>
         <div data-aos="fade-down" class="posAnimate text-niu"></div>
-        <div class="arrow-box" style="top: 17672px;">
+        <div class="arrow-box" style="top: 19426px;">
             <div class="tentacles arrow-left"></div>
             <div class="tentacles arrow-right"></div>
         </div>
@@ -267,7 +278,7 @@
 
         // 显示弹窗
         $('.clickBtn').on('click', function () {
-            if(loginSuccess){
+            if (loginSuccess) {
                 var popName = $(this).data('popname');
                 $('.pop_' + popName).show();
                 $('.popBox').fadeIn();
@@ -275,7 +286,7 @@
                 $('body').css({
                     "overflow-y": "hidden"
                 });
-            }else{
+            } else {
                 alert('游客不能访问该信息哦~')
             }
         });
