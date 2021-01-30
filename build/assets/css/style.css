@@ -399,7 +399,7 @@
 
 .clickBtn {
     position: absolute;
-    /*background-color: rgba(255, 255, 255, 0.6);*/
+    background-color: rgba(255, 255, 255, 0.6);
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -411,25 +411,25 @@
 .tenYear {
     width: 410px;
     height: 76px;
-    top: 6926px;
+    top: 6736px;
 }
 
 .fiveYear {
     width: 410px;
     height: 76px;
-    top: 7960px;
+    top: 7780px;
 }
 
 .kyxf {
     width: 600px;
     height: 106px;
-    top: 9885px;
+    top: 9698px;
 }
 
 .nddj {
     width: 600px;
     height: 106px;
-    top: 11846px;
+    top: 11660px;
 }
 
 .popBox {
@@ -654,6 +654,7 @@
         transform: scale(1);
     }
 }
+
 .tada {
     -webkit-animation-name: tada;
     animation-name: tada
