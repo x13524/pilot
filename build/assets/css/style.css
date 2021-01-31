@@ -241,6 +241,17 @@
     background-repeat: no-repeat;
 }
 
+.text-dangwei{
+    top: 10208px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url("../images/content/text-dangwei.png");
+    width: 557px;
+    height: 47px;
+    background-repeat: no-repeat;
+}
+
 .img-kangyi {
     top: 8552px;
     left: 240px;
@@ -251,7 +262,7 @@
 }
 
 .text-dajiang {
-    top: 10169px;
+    top: 12181px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -262,7 +273,7 @@
 }
 
 .img-dajiang {
-    top: 10475px;
+    top: 12487px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -273,7 +284,7 @@
 }
 
 .text-2021 {
-    top: 13555px;
+    top: 15567px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -285,7 +296,7 @@
 }
 
 .text-zhufu {
-    top: 14085px;
+    top: 16097px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -296,7 +307,7 @@
 }
 
 .img-click {
-    top: 14621px;
+    top: 16633px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -307,7 +318,7 @@
 }
 
 .text-haoyun {
-    top: 15521px;
+    top: 17533px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -319,7 +330,7 @@
 }
 
 .haoyun-fuli {
-    top: 16033px;
+    top: 18045px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -330,7 +341,7 @@
 }
 
 .haoyun-2021 {
-    top: 16222px;
+    top: 18236px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -341,7 +352,7 @@
 }
 
 .img-fuli {
-    top: 16582px;
+    top: 18594px;
     left: 228px;
     background-image: url("../images/content/img-fuli.png");
     width: 643px;
@@ -351,7 +362,7 @@
 }
 
 .text-fuli {
-    top: 17454px;
+    top: 19454px;
     background-image: url("../images/content/text-fuli.png");
     width: 500px;
     height: 109px;
@@ -374,7 +385,7 @@
 }
 
 .text-xianghe {
-    top: 17993px;
+    top: 20005px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -386,7 +397,7 @@
 }
 
 .text-niu {
-    top: 19426px;
+    top: 21438px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -429,7 +440,13 @@
 .nddj {
     width: 600px;
     height: 106px;
-    top: 11660px;
+    top: 13670px;
+}
+
+.dangwei{
+    width: 600px;
+    height: 107px;
+    top: 11686px;
 }
 
 .popBox {
@@ -483,7 +500,7 @@
 
 .videoBox {
     position: absolute;
-    top: 12416px;
+    top: 14445px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -589,7 +606,7 @@
     width: 1000px;
     height: 1370px;
     margin: 0 auto;
-    top: 14266px;
+    top: 16270px;
 }
 
 .hand {
@@ -752,19 +769,19 @@ input.department {
 }
 
 .arrow-text-2021 {
-    top: 13555px;
+    top: 17533px;
 }
 
 .arrow-text-haoyun {
-    top: 15521px;
+    top: 15567px;
 }
 
 .arrow-text-fuli {
-    top: 17466px;
+    top: 19466px;
 }
 
 .arrow-text-niu {
-    top: 19426px;
+    top: 21438px;
 }
 
 /* 隐藏大奖与奖励 */
@@ -788,7 +805,7 @@ input.department {
 }
 
 .touristsType .text-zhufu {
-    top: 7726px;
+    top: 7694px;
 }
 
 .touristsType .img-click {
@@ -800,21 +817,21 @@ input.department {
 }
 
 .touristsType .text-haoyun {
-    top: 11134px;
+    top: 9118px;
 }
 
 .touristsType .arrow-text-haoyun {
-    top: 11136px;
+    top: 9122px;
 }
 
 .touristsType .text-xianghe {
-    top: 9700px;
+    top: 9660px;
 }
 
 .touristsType .text-niu {
-    top: 9156px;
+    top: 11094px;
 }
 
 .touristsType .arrow-text-niu {
-    top: 9152px;
+    top: 11090px;
 }
