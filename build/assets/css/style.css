@@ -462,6 +462,7 @@
     z-index: 999;
     max-width: 1080px;
     background-color: #1d509b;
+    -webkit-overflow-scrolling: touch;
 }
 
 .popContent {
