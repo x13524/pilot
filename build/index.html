@@ -61,6 +61,12 @@
         <div data-aos="fade-down" class="touristsHide posAnimate img-kangyi"></div>
         <div data-aos="fade-down" class="touristsHide posAnimate text-dajiang"></div>
         <div data-aos="fade-down" class="touristsHide posAnimate img-dajiang"></div>
+
+        <!-- 视频播放-->
+        <div class="posAnimate img-boss-video J_video_play">
+<!--            <img class="boss-video" src="./assets/images/video-poster.jpg" alt="">-->
+            <img class="video-play-btn" src="./assets/images/play.png" alt="">
+        </div>
         <!-- 左右机器臂动画-->
         <div data-aos="fade-down" class="posAnimate text-2021"></div>
         <div class="arrow-box arrow-text-2021">
@@ -108,11 +114,11 @@
 
         <div class="J_Shake"></div>
 
-        <div class="videoBox">
-            <video class="videoDom" controls poster="./assets/images/video-poster.jpg" preload="auto" webkit-playsinline="webkit-playsinline">
-                <source src="./assets/video/video.mp4" type="video/mp4">
-            </video>
-        </div>
+        <!--        <div class="videoBox">-->
+        <!--            <video class="videoDom" controls poster="./assets/images/video-poster.jpg" preload="auto" webkit-playsinline="webkit-playsinline">-->
+        <!--                <source src="./assets/video/video.mp4" type="video/mp4">-->
+        <!--            </video>-->
+        <!--        </div>-->
     </div>
 </div>
 
@@ -173,6 +179,25 @@
             <div class="submitBtn"></div>
             <div class="closeBtn"></div>
         </div>
+    </div>
+</div>
+
+<!-- 视频播放弹窗 -->
+
+<div class="popVideoBox">
+    <div class="videoMask"></div>
+    <div class="index-videoBox">
+        <video
+                id="video-popup"
+                class="index-videoModel"
+                controls
+                preload="auto"
+                playsinline
+                webkit-playsinline="true"
+                x5-video-player-type="h5"
+                src="./assets/video/video.mp4"
+        ></video>
+        <div class="index-videoClose"></div>
     </div>
 </div>
 
@@ -341,6 +366,25 @@
                 "overflow-y": "auto"
             });
         });
+
+        // 打开视频播放弹窗
+        $('.J_video_play').on('click', function () {
+            $('.popVideoBox').show();
+            $('body').css({
+                "overflow-y": "hidden"
+            });
+            $('video#video-popup').trigger('play');
+        });
+
+        //   关闭视频播放弹窗
+        $('.popVideoBox .index-videoClose, .popVideoBox .videoMask').on('click', function () {
+            $('video#video-popup').trigger('pause');
+            $('.popVideoBox').hide();
+            $('body').css({
+                "overflow-y": "auto"
+            });
+        });
+
     })(window);
 </script>
 </body>
