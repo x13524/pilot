@@ -166,9 +166,9 @@
 .contentPage {
     /*background-image: url("../images/content/bg.jpg");*/
     /*background-image: url("../images/content/bg-del.jpg");*/
-    height: 19795px;
+    /*height: 19795px;*/
     width: 1080px;
-    min-height: 15000px;
+    min-height: 10000px;
     background-repeat: no-repeat;
     margin: 0 auto;
     position: relative;
@@ -399,7 +399,7 @@
 
 .clickBtn {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.6);
+    /*background-color: rgba(255, 255, 255, 0.6);*/
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -749,4 +749,72 @@ input.department {
     background-image: url("../images/index/back.png");
     width: 248px;
     height: 97px;
+}
+
+.arrow-text-2021 {
+    top: 13555px;
+}
+
+.arrow-text-haoyun {
+    top: 15521px;
+}
+
+.arrow-text-fuli {
+    top: 17466px;
+}
+
+.arrow-text-niu {
+    top: 19426px;
+}
+
+/* 隐藏大奖与奖励 */
+.touristsType .touristsHide {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.touristsType .videoBox {
+    top: 6066px;
+}
+
+.touristsType .text-2021 {
+    top: 7208px;
+}
+
+.touristsType .arrow-text-2021 {
+    top: 7208px;
+}
+
+.touristsType .text-zhufu {
+    top: 7726px;
+}
+
+.touristsType .img-click {
+    top: 8260px;
+}
+
+.touristsType .J_Shake {
+    top: 7904px;
+}
+
+.touristsType .text-haoyun {
+    top: 11134px;
+}
+
+.touristsType .arrow-text-haoyun {
+    top: 11136px;
+}
+
+.touristsType .text-xianghe {
+    top: 9700px;
+}
+
+.touristsType .text-niu {
+    top: 9156px;
+}
+
+.touristsType .arrow-text-niu {
+    top: 9152px;
 }
