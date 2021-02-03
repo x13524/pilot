@@ -145,7 +145,7 @@
 <div class="wishPopBox">
     <div class="wishPopContent">
         <div class="headBox J_head">
-            <img src="./assets/images/wish/test-head.jpg" alt="">
+<!--            <img src="./assets/images/wish/test-head.jpg" alt="">-->
         </div>
         <div class="usernameBox J_username">万事如意</div>
         <div class="wishImg" style="background-image: url('./assets/images/wish/1.jpg')"></div>
@@ -212,13 +212,14 @@
         var loginSuccess = false;
         var ua = window.navigator.userAgent.toLowerCase();
         if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-            var eventData = {
-                title: 'bia标题',
-                desc: '文案',
-                link: window.location.origin + window.location.pathname,
-                // imgUrl: 'https://abc.com/wxshare_logo/wx_share.jpg?pc_hash&#x3D;th5Q7g'
-            };
-            usewxapi.getSignature(eventData);
+            // 此处是微信分享
+            // var eventData = {
+            //     title: 'bia标题',
+            //     desc: '文案',
+            //     link: window.location.origin + window.location.pathname,
+            //     // imgUrl: 'https://abc.com/wxshare_logo/wx_share.jpg?pc_hash&#x3D;th5Q7g'
+            // };
+            // usewxapi.getSignature(eventData);
         }
 
         AOS.init({
